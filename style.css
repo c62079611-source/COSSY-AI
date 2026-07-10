@@ -233,6 +233,9 @@ body {
 
 
 .hero-buttons {
+    display:flex;
+    gap:20px;
+}
 
     display:flex;
     gap:20px;
@@ -320,6 +323,8 @@ body {
     #00eaff,
     #7b2cff
     );
+
+}
 
    /* COSSY AI Console */
 
