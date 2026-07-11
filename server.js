@@ -14,27 +14,21 @@ const openai = new OpenAI({
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY
-}); 
+});        
 
 const PORT = 3000;
 
-
 // Middleware
-
 app.use(cors());
-
 app.use(express.json());
+app.use(express.static("public"));
 
-
-// Test route
-
+// Home route
 app.get("/", (req, res) => {
-
-    res.send("COSSY AI Core Server Online 🚀");
-
+    res.sendFile(__dirname + "/public/index.html");
 });
 
-
+ 
 // AI message route
 
 app.post("/chat", (req, res) => {
