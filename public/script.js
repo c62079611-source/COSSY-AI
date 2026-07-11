@@ -1,1 +1,100 @@
- 
+// COSSY AI Core System
+
+const startButton = document.getElementById("startButton");
+const sendButton = document.getElementById("sendButton");
+const userInput = document.getElementById("userInput");
+const chatWindow = document.getElementById("chatWindow");
+
+
+// Launch AI animation
+
+if (startButton) {
+
+    startButton.addEventListener("click", () => {
+
+        addMessage(
+            "COSSY AI Core Activated. Neural systems are online.",
+            "system"
+        );
+
+    });
+
+}
+
+
+// Send message
+
+if (sendButton) {
+
+    sendButton.addEventListener("click", sendMessage);
+
+}
+
+
+if (userInput) {
+
+    userInput.addEventListener("keypress", function(event){
+
+        if(event.key === "Enter"){
+
+            sendMessage();
+
+        }
+
+    });
+
+}
+
+
+// Message function
+
+function addMessage(message, type){
+
+    const div = document.createElement("div");
+
+    div.className = type + "-message";
+
+    div.innerText = message;
+
+    chatWindow.appendChild(div);
+
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+
+}
+
+
+// User message function
+
+function sendMessage(){
+
+    const text = userInput.value.trim();
+
+
+    if(text === ""){
+
+        return;
+
+    }
+
+
+    addMessage(
+        "You: " + text,
+        "user"
+    );
+
+
+    userInput.value = "";
+
+
+    setTimeout(()=>{
+
+        addMessage(
+            "COSSY AI is analyzing your request through the intelligence network...",
+            "system"
+        );
+
+
+    },800);
+
+
+}   
